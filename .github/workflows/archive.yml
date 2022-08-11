@@ -12,15 +12,16 @@ jobs:
     container:
       image: mongo
       options: --user root
-      env:
-        SOURCE: ${{secrets.SOURCE}}
-        DEST: ${{secrets.DEST}}
 
     steps:
       # - uses: actions/checkout@v3
 
       - name: Export records from source Mongo DB
-        run: mongodump --out /backups ${{secrets.SOURCE}}
+        env:
+          SOURCE: ${{secrets.SOURCE}}
+        run: mongodump --out /backups $SOURCE
         
       - name: Upload records to destination Mongo DB
-        run: mongorestore --dir=/backups ${{secrets.DEST}}
+        env: 
+          DEST: ${{secrets.DEST}}
+        run: mongorestore --dir=/backups $DEST
