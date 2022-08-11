@@ -4,7 +4,7 @@ A simple script that copies your Nightscout records from one Mongo database to a
 
 ## How do I use this?
 
-1. Click "use this template" to copy this repo
+1. Click "[Use this template](https://github.com/nielsmaerten/nightscout-archiver/generate)" to copy this repo
 2. Open the repo's Action Secrets:  
    https://github.com/[yourGitHubUsername]/nightscout-archiver/settings/secrets/actions
 3. Add these 2 secrets:
