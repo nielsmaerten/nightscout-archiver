@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: mongo
+      options: --user root
       env:
         SOURCE: ${{secrets.SOURCE}}
         DEST: ${{secrets.DEST}}
