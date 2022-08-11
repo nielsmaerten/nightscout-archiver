@@ -1,0 +1,25 @@
+name: Archive Nightscout
+
+# Run this workflow once a month, or when invoked
+on:
+  schedule:
+    - cron: '0 0 1 * *'
+  workflow_dispatch:
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    container:
+      image: mongo
+      env:
+        SOURCE: ${{secrets.SOURCE}}
+        DEST: ${{secrets.DEST}}
+
+    steps:
+      # - uses: actions/checkout@v3
+
+      - name: Export records from source Mongo DB
+        run: mongodump --out /backups ${{secrets.SOURCE}}
+        
+      - name: Upload records to destination Mongo DB
+        run: mongorestore --dir=/backups ${{secrets.DEST}}
