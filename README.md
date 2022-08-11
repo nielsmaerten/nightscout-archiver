@@ -21,8 +21,8 @@ Another scenario would be having a self-hosted MongoDB for archiving purposes, t
 
 For example:
 
-- `SOURCE`: mongodb+srv://USERNAME:PASSWORD@host.mongodb.net/nightscout?retryWrites=true&w=majority
-- `DEST`: mongodb+srv://USERNAME:PASSWORD@host.mongodb.net/?retryWrites=true&w=majority
+- **SOURCE**: `mongodb+srv://USERNAME:PASSWORD@host.mongodb.net/nightscout?retryWrites=true&w=majority`
+- **DEST**: `mongodb+srv://USERNAME:PASSWORD@host.mongodb.net/?retryWrites=true&w=majority`
 
 **Note:** In 'source', the name of the database (nightscout) is specified after the /, but in 'dest' it is not.
 
