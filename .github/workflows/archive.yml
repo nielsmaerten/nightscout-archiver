@@ -3,7 +3,7 @@ name: Archive Nightscout
 # Run this workflow once a month, or when invoked
 on:
   schedule:
-    - cron: '0 0 1 * *'
+    - cron: '20 4 10 * *' # https://crontab.guru/#20_4_10_*_*
   workflow_dispatch:
 
 jobs:
@@ -14,8 +14,6 @@ jobs:
       options: --user root
 
     steps:
-      # - uses: actions/checkout@v3
-
       - name: Export records from source Mongo DB
         env:
           SOURCE: ${{secrets.SOURCE}}
@@ -24,4 +22,4 @@ jobs:
       - name: Upload records to destination Mongo DB
         env: 
           DEST: ${{secrets.DEST}}
-        run: mongorestore --dir=/backups $DEST
+        run: mongorestore --quiet --dir=/backups $DEST
